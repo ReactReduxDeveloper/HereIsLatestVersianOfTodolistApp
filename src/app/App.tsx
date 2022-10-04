@@ -17,7 +17,7 @@ import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackBar";
 import {useSelector} from "react-redux";
 import {AppRootState, useTypedDispatch} from "./store";
 import {initializedTC, RequestStatusType} from "./app-reducer";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {logoutTC} from "../features/Login/login-reduce";
 
@@ -36,11 +36,17 @@ function App({demo = false}: PropsType) {
     const initialized = useSelector<AppRootState, boolean>((state) => state.app.initialized)
     const isLoggedIn = useSelector<AppRootState, boolean>((state) => state.login.isLoggedIn)
 
+    const navigate = useNavigate()
+
     const dispacth = useTypedDispatch()
 
     useEffect(() => {
         dispacth(initializedTC())
     }, [])
+
+    useEffect(() => {
+        initialized && !isLoggedIn && navigate("/login")
+    }, [isLoggedIn, initialized])
 
     const logOutHandler = useCallback(() => {
         dispacth(logoutTC())
@@ -53,36 +59,34 @@ function App({demo = false}: PropsType) {
     }
 
 
-
     return (
-        <BrowserRouter>
-            <div className="App">
-                <CustomizedSnackbars/>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                        >
-                            <Menu/>
-                        </IconButton>
-                        <Typography variant="h6">
-                            Todolist
-                        </Typography>
-                        {isLoggedIn && <Button color="inherit" onClick={logOutHandler}>Log out</Button>}
-                    </Toolbar>
-                    {status === 'loading' && <LinearProgress/>}
-                </AppBar>
-                <Container fixed>
-                    <Routes>
-                        <Route path={"/login"} element={<Login/>}></Route>
-                        <Route path={"/"} element={<TodoListLists demo={demo}/>}></Route>
 
-                    </Routes>
-                </Container>
-            </div>
-        </BrowserRouter>
+        <div className="App">
+            <CustomizedSnackbars/>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                    >
+                        <Menu/>
+                    </IconButton>
+                    <Typography variant="h6">
+                        Todolist
+                    </Typography>
+                    {isLoggedIn && <Button color="inherit" onClick={logOutHandler}>Log out</Button>}
+                </Toolbar>
+                {status === 'loading' && <LinearProgress/>}
+            </AppBar>
+            <Container fixed>
+                <Routes>
+                    <Route path={"/login"} element={<Login/>}></Route>
+                    <Route path={"/"} element={<TodoListLists demo={demo}/>}></Route>
+
+                </Routes>
+            </Container>
+        </div>
     );
 }
 

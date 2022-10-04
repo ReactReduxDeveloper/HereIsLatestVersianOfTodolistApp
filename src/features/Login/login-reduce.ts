@@ -5,7 +5,7 @@ import {SetErrorActionType, setAppStatusAC, SetStatusActionType} from "../../app
 import {authAPI, LoginParamsType} from "../../api/todolists_api";
 import {handleServerAppError, handleServerNetworkError} from "../../utils/error-utils";
 
-type LoginActionType = ReturnType<typeof setIsLoggedInAC>
+export type LoginActionType = ReturnType<typeof setIsLoggedInAC>
 type InitialStateType = {}
 let initialState: InitialStateType = {
     isLoggedIn: false

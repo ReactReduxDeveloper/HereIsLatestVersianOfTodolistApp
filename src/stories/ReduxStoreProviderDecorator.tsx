@@ -58,7 +58,7 @@ const initialGlobalState = {
     }
 }
 
-export const storyBookStore = createStore(rootReducer, initialGlobalState as AppRootState, applyMiddleware(thunkMiddleware))
+export const storyBookStore = createStore(rootReducer, initialGlobalState as any, applyMiddleware(thunkMiddleware))
 
 export const ReduxStoreProviderDecorator = (storyFn: any) => (
     <Provider

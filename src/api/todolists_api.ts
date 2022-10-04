@@ -113,6 +113,6 @@ export const authAPI = {
         return instance.delete<ResponseType<{userId?: number}>>("auth/login")
     },
     me() {
-        const promise = instance.get<ResponseType<{id: number; email:string, login: string}>>("auth/login")
+        return  instance.get<ResponseType<{id: number; email:string, login: string}>>("auth/me")
     }
 }

@@ -2,7 +2,7 @@ import {ThunkDispatch} from "redux-thunk";
 import {AppRootState} from "./store";
 import {TodoListActionType} from "../features/TodolistsList/Todolist/todolists-reducer";
 import {authAPI} from "../api/todolists_api";
-import {setIsLoggedInAC} from "../features/Login/login-reduce";
+import {LoginActionType, setIsLoggedInAC} from "../features/Login/login-reduce";
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 export type ErrorType = string | null
@@ -20,6 +20,10 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
             return {...state, status: action.status}
         case 'APP/SET-ERROR':
             return {...state, error: action.error}
+        case 'APP/SET-INITIALIZED':
+            console.log(1)
+            return {...state, initialized: action.value}
+
         default:
             return state
     }
@@ -29,15 +33,21 @@ export const setAppErrorAC = (error: ErrorType) => ({type: 'APP/SET-ERROR', erro
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 export const setAppInitializedAC = (value: boolean) => ({type: 'APP/SET-INITIALIZED', value} as const)
 
-export const initializedTC = () => (dispatch: ThunkDispatch<AppRootState, any, ActionsType>) => {
-    authAPI.me().then(res => {
-        if (res.data.resultCode === 0) {
-            dispatch(setIsLoggedInAC(true))
-        } else {
-
-        }
+export const initializedTC = () => (dispatch: ThunkDispatch<AppRootState, any, ActionsType | LoginActionType>) => {
+    try {
+        authAPI.me().then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(setIsLoggedInAC(true))
+            } else {
+                dispatch(setIsLoggedInAC(false))
+            }
+            dispatch(setAppInitializedAC(true))
+        })
+    } catch {
         dispatch(setAppInitializedAC(true))
-    })
+    }
+
+
 }
 
 
