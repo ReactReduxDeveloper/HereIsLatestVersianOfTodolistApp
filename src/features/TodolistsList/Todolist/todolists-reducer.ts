@@ -3,8 +3,6 @@ import {todolistsApi, TodoListsType} from "../../../api/todolists_api";
 import {ThunkDispatch} from "redux-thunk";
 import {AppRootState} from "../../../app/store";
 import {RequestStatusType, SetErrorActionType, setAppStatusAC, SetStatusActionType} from "../../../app/app-reducer";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 import {handleServerAppError, handleServerNetworkError} from "../../../utils/error-utils";
 
 export type AddTodolistType = ReturnType<typeof addTodolistAC>;
