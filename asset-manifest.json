@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/HereIsLatestVersianOfTodolistApp/static/css/main.3b2e0d17.chunk.css",
+    "main.js": "/HereIsLatestVersianOfTodolistApp/static/js/main.d4ba4781.chunk.js",
+    "main.js.map": "/HereIsLatestVersianOfTodolistApp/static/js/main.d4ba4781.chunk.js.map",
+    "runtime-main.js": "/HereIsLatestVersianOfTodolistApp/static/js/runtime-main.c2e7957f.js",
+    "runtime-main.js.map": "/HereIsLatestVersianOfTodolistApp/static/js/runtime-main.c2e7957f.js.map",
+    "static/js/2.00e1dc51.chunk.js": "/HereIsLatestVersianOfTodolistApp/static/js/2.00e1dc51.chunk.js",
+    "static/js/2.00e1dc51.chunk.js.map": "/HereIsLatestVersianOfTodolistApp/static/js/2.00e1dc51.chunk.js.map",
+    "index.html": "/HereIsLatestVersianOfTodolistApp/index.html",
+    "precache-manifest.03c1aa381a70a28aaf1f44f81d8f145d.js": "/HereIsLatestVersianOfTodolistApp/precache-manifest.03c1aa381a70a28aaf1f44f81d8f145d.js",
+    "service-worker.js": "/HereIsLatestVersianOfTodolistApp/service-worker.js",
+    "static/css/main.3b2e0d17.chunk.css.map": "/HereIsLatestVersianOfTodolistApp/static/css/main.3b2e0d17.chunk.css.map",
+    "static/js/2.00e1dc51.chunk.js.LICENSE.txt": "/HereIsLatestVersianOfTodolistApp/static/js/2.00e1dc51.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c2e7957f.js",
+    "static/js/2.00e1dc51.chunk.js",
+    "static/css/main.3b2e0d17.chunk.css",
+    "static/js/main.d4ba4781.chunk.js"
+  ]
+}
