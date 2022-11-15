@@ -4,13 +4,13 @@ import App from "./App";
 import {ReduxStoreProviderDecorator} from "../stories/ReduxStoreProviderDecorator";
 
 export default {
-    title: "AddAppWithRedux Component",
-    component: App,
-    decorators: [ReduxStoreProviderDecorator]
-}
+  title: "AddAppWithRedux Component",
+  component: App,
+  decorators: [ReduxStoreProviderDecorator],
+};
 
-const callBack = action("Button 'add' was pressed inside the form")
+const callBack = action("Button 'add' was pressed inside the form");
 
 export const AppWithReduxBaseExample = (props: any) => {
-    return (<App demo={true}/>)
-}
+  return <App demo={true} />;
+};
